@@ -35,7 +35,7 @@ jobs:
           docker build \
             -t ${{ env.IMAGE_NAME }} .
 
-      - name: Log in to Docker registry
+      - name: Log in to Docker
         run: docker login -u crypticmetadev -p ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push image to Docker registry
