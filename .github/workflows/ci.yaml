@@ -1,4 +1,4 @@
-name: XORD DEPLOY CI
+name: xord DEPLOY CI
 
 on:
   push:
@@ -6,14 +6,14 @@ on:
       - 'ordinalnovus'
 
 env:
-  BASE_IMAGE_NAME: crypticmetadev/XORD
+  BASE_IMAGE_NAME: crypticmetadev/xord
 
 jobs:
   build-and-push-backend:
     runs-on: ubuntu-latest
     env:
       BRANCH_NAME: ${GITHUB_REF##*/}
-      IMAGE_NAME: crypticmetadev/XORD:${GITHUB_REF##*/}
+      IMAGE_NAME: crypticmetadev/xord:${GITHUB_REF##*/}
 
     steps:
       - name: Checkout code
@@ -30,7 +30,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-      - name: Build XORD image
+      - name: Build xord image
         run: |
           docker build \
             -t ${{ env.IMAGE_NAME }} .
@@ -43,4 +43,4 @@ jobs:
           BRANCH_NAME=${GITHUB_REF##*/}
           docker push ${BASE_IMAGE_NAME}:${BRANCH_NAME}
         env:
-          BASE_IMAGE_NAME: crypticmetadev/XORD
+          BASE_IMAGE_NAME: crypticmetadev/xord
