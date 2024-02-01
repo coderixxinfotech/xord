@@ -31,7 +31,7 @@ fi
 retries=0
 while [ $retries -lt 3 ]; do
     # Start the application
-    ord --rpc-url bitcoin-container:8332 --bitcoin-rpc-user mempool --bitcoin-rpc-pass mempool --data-dir /root/.local/share/ord/$runDir server --http-port 8080 -j &>/dev/stdout &
+    ord --rpc-url bitcoin-container:8332 --bitcoin-rpc-user mempool --bitcoin-rpc-pass mempool --data-dir /root/.local/share/ord/$runDir  --index-only-first-transfer --index-transfer-history --filter-metaprotocol cbrc-20 --filter-metaprotocol "@" server --http-port 8080 -j &>/dev/stdout &
     
     # Sleep for a few seconds to allow the server to start up
     sleep 5
